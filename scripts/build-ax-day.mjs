@@ -26,7 +26,7 @@ const localDayDir = path.join(stewartDir, "ax-day", date);
 await mkdir(localDayDir, { recursive: true });
 await writeFile(path.join(localDayDir, "index.html"), renderStandaloneHtml(payload));
 
-const privateLink = `${hostUrl}?day=${encodeURIComponent(date)}#key=${encodeURIComponent(key)}`;
+const privateLink = `${hostUrl}?day=${encodeURIComponent(date)}&v=${encodeURIComponent(encrypted.rev)}#key=${encodeURIComponent(key)}`;
 const message = [
   `Your Ax's Day${label} is ready:`,
   privateLink,
@@ -48,6 +48,7 @@ console.log(JSON.stringify({
 
 function buildPayload(markdownText, day) {
   const oneLine = extractSectionFirstText(markdownText, "Today In One Line") || "A day worth remembering.";
+  const displayMarkdown = stripLeadingMetadataFence(markdownText);
 
   return {
     version: 1,
@@ -61,8 +62,12 @@ function buildPayload(markdownText, day) {
       artifacts: countBullets(markdownText, "Artifacts"),
       publicSeeds: countBullets(markdownText, "Public-Candidate Seeds")
     },
-    markdown: markdownText
+    markdown: displayMarkdown
   };
+}
+
+function stripLeadingMetadataFence(markdownText) {
+  return markdownText.replace(/^(# .+?\n+)?```ya?ml\n[\s\S]*?\n```\n+/i, "$1");
 }
 
 function encryptPayload(payload) {
@@ -80,6 +85,7 @@ function encryptPayload(payload) {
     encrypted: {
       v: 1,
       alg: "AES-256-GCM",
+      rev: base64Url(randomBytes(8)),
       iv: base64Url(iv),
       data: base64Url(Buffer.concat([ciphertext, tag])),
       generatedAt: new Date().toISOString()
@@ -273,4 +279,3 @@ function escapeRegExp(value) {
 function relativeFromHq(value) {
   return path.relative(hqRoot, value);
 }
-

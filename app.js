@@ -10,6 +10,7 @@ const contentEl = document.getElementById("content");
 
 const params = new URLSearchParams(window.location.search);
 const day = params.get("day");
+const rev = params.get("v") || params.get("rev") || "";
 const key = new URLSearchParams(window.location.hash.slice(1)).get("key");
 
 if (day && key) {
@@ -19,7 +20,8 @@ if (day && key) {
 async function openDay(dayValue, keyValue) {
   try {
     statusEl.textContent = "Decrypting today's little celebration...";
-    const response = await fetch(`./days/${encodeURIComponent(dayValue)}.json.enc`, { cache: "no-store" });
+    const cacheBuster = rev ? `?v=${encodeURIComponent(rev)}` : "";
+    const response = await fetch(`./days/${encodeURIComponent(dayValue)}.json.enc${cacheBuster}`, { cache: "no-store" });
     if (!response.ok) {
       throw new Error(`No hosted payload found for ${dayValue}.`);
     }
@@ -155,4 +157,3 @@ function escapeHtml(value) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
-
