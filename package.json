@@ -6,7 +6,7 @@
   "scripts": {
     "build:day": "node scripts/build-ax-day.mjs",
     "build:sample": "node scripts/build-ax-day.mjs --date 2026-05-21 --source sample/2026-05-21.md --label setup-test",
+    "publish:day": "node scripts/publish-day.mjs",
     "send:pushover": "node scripts/send-pushover.mjs"
   }
 }
-

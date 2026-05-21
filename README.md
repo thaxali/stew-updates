@@ -51,3 +51,8 @@ npm run send:pushover -- --date 2026-05-21
 
 Commit and push this folder to the `stew-updates` GitHub repository. GitHub Pages serves the root directory from `main`.
 
+For the nightly automation, publish only the encrypted day payload:
+
+```bash
+npm run publish:day -- --date 2026-05-21
+```
