@@ -3,17 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="color-scheme" content="dark">
+    <meta name="color-scheme" content="light">
     <title>Stew Updates</title>
-    <link rel="stylesheet" href="./styles.css?v=20260521">
+    <link rel="stylesheet" href="./styles.css?v=20260521b">
   </head>
   <body>
     <main class="shell">
-      <section class="hero" id="hero">
-        <p class="eyebrow">Stew Updates</p>
-        <h1>Ax's Day</h1>
-        <p class="lede" id="status">Paste or open a private daily link to unwrap the day.</p>
-      </section>
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Stew Updates</span>
+        </div>
+        <span class="private-label">Private</span>
+      </header>
 
       <section class="state" id="empty-state">
         <h2>Private By Design</h2>
@@ -23,9 +25,21 @@
       </section>
 
       <section class="day" id="day" hidden>
-        <div class="date-pill" id="date"></div>
-        <p class="summary" id="summary"></p>
-        <div class="scoreboard" id="scoreboard"></div>
+        <section class="hero" id="hero">
+          <p class="eyebrow" id="eyebrow">Ax's Day</p>
+          <div class="date-lockup">
+            <span class="day-number" id="day-number"></span>
+            <span class="weekday" id="weekday"></span>
+            <div class="month-stack">
+              <span id="month"></span>
+              <span id="year"></span>
+            </div>
+          </div>
+          <p class="lede" id="status">Paste or open a private daily link to unwrap the day.</p>
+          <div class="dot-calendar" id="dot-calendar" aria-label="Day activity dots"></div>
+        </section>
+
+        <section class="scoreboard" id="scoreboard" aria-label="Day totals"></section>
         <article class="markdown" id="content"></article>
       </section>
 
@@ -35,6 +49,6 @@
       </section>
     </main>
 
-    <script src="./app.js?v=20260521"></script>
+    <script src="./app.js?v=20260521b"></script>
   </body>
 </html>

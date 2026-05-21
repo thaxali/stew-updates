@@ -48,7 +48,7 @@ console.log(JSON.stringify({
 
 function buildPayload(markdownText, day) {
   const oneLine = extractSectionFirstText(markdownText, "Today In One Line") || "A day worth remembering.";
-  const displayMarkdown = stripLeadingMetadataFence(markdownText);
+  const displayMarkdown = stripSection(stripLeadingMetadataAndTitle(markdownText), "Today In One Line");
 
   return {
     version: 1,
@@ -66,8 +66,35 @@ function buildPayload(markdownText, day) {
   };
 }
 
-function stripLeadingMetadataFence(markdownText) {
-  return markdownText.replace(/^(# .+?\n+)?```ya?ml\n[\s\S]*?\n```\n+/i, "$1");
+function stripLeadingMetadataAndTitle(markdownText) {
+  return markdownText
+    .replace(/^# .+?\n+/i, "")
+    .replace(/^```ya?ml\n[\s\S]*?\n```\n+/i, "");
+}
+
+function stripSection(markdownText, sectionName) {
+  const lines = markdownText.split(/\r?\n/);
+  const headingPattern = new RegExp(`^#{2,3}\\s+${escapeRegExp(sectionName)}\\s*$`, "i");
+  const nextHeadingPattern = /^#{1,3}\s+/;
+  const kept = [];
+  let skipping = false;
+
+  for (const line of lines) {
+    if (headingPattern.test(line.trim())) {
+      skipping = true;
+      continue;
+    }
+
+    if (skipping && nextHeadingPattern.test(line.trim())) {
+      skipping = false;
+    }
+
+    if (!skipping) {
+      kept.push(line);
+    }
+  }
+
+  return kept.join("\n").replace(/\n{3,}/g, "\n\n").trim();
 }
 
 function encryptPayload(payload) {
