@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <title>Stew Updates</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" id="hero">
+        <p class="eyebrow">Stew Updates</p>
+        <h1>Ax's Day</h1>
+        <p class="lede" id="status">Paste or open a private daily link to unwrap the day.</p>
+      </section>
+
+      <section class="state" id="empty-state">
+        <h2>Private By Design</h2>
+        <p>
+          This page is only the viewer. Daily recaps are encrypted before hosting, and the key lives in your private link.
+        </p>
+      </section>
+
+      <section class="day" id="day" hidden>
+        <div class="date-pill" id="date"></div>
+        <p class="summary" id="summary"></p>
+        <div class="scoreboard" id="scoreboard"></div>
+        <article class="markdown" id="content"></article>
+      </section>
+
+      <section class="state error" id="error" hidden>
+        <h2>Could Not Open This Day</h2>
+        <p id="error-message"></p>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+

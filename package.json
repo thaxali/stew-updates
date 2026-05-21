@@ -1,0 +1,12 @@
+{
+  "name": "stew-updates",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:day": "node scripts/build-ax-day.mjs",
+    "build:sample": "node scripts/build-ax-day.mjs --date 2026-05-21 --source sample/2026-05-21.md --label setup-test",
+    "send:pushover": "node scripts/send-pushover.mjs"
+  }
+}
+
