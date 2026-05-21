@@ -8,7 +8,6 @@ const dayNumberEl = document.getElementById("day-number");
 const weekdayEl = document.getElementById("weekday");
 const monthEl = document.getElementById("month");
 const yearEl = document.getElementById("year");
-const dotCalendarEl = document.getElementById("dot-calendar");
 const scoreboardEl = document.getElementById("scoreboard");
 const contentEl = document.getElementById("content");
 
@@ -72,7 +71,6 @@ function renderPayload(payload) {
   monthEl.textContent = dateParts.month;
   yearEl.textContent = dateParts.year;
   statusEl.textContent = payload.oneLine || "A day worth remembering.";
-  renderDots(payload.counts || {});
   scoreboardEl.innerHTML = "";
 
   const metrics = [
@@ -121,20 +119,6 @@ function getDateParts(value) {
       timeZone: "UTC"
     })
   };
-}
-
-function renderDots(counts) {
-  const total = Math.max(1, Math.min(28, (counts.work ?? 0) + (counts.artifacts ?? 0) + (counts.publicSeeds ?? 0)));
-  dotCalendarEl.innerHTML = "";
-
-  for (let index = 0; index < 28; index += 1) {
-    const dot = document.createElement("span");
-    dot.className = index < total ? "dot is-filled" : "dot";
-    if (index === Math.min(27, total)) {
-      dot.className = "dot is-today";
-    }
-    dotCalendarEl.appendChild(dot);
-  }
 }
 
 function base64UrlToBytes(value) {

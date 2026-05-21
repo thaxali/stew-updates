@@ -11,6 +11,8 @@
   --orange: #f15b2a;
   --orange-soft: rgba(241, 91, 42, 0.16);
   --black: #11110f;
+  --radius-card: 26px;
+  --radius-panel: 30px;
   --shadow: 0 22px 70px rgba(27, 24, 20, 0.08);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -102,7 +104,7 @@ body {
 .state {
   margin-top: 42px;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-panel);
   background: var(--panel);
   box-shadow: var(--shadow);
   padding: 22px;
@@ -204,37 +206,12 @@ body {
 }
 
 .lede {
-  max-width: 21rem;
-  margin: 34px 0 0;
+  max-width: 23rem;
+  margin: 34px 0 10px;
   color: var(--ink);
-  font-size: clamp(1.42rem, 7vw, 2.4rem);
-  font-weight: 650;
-  line-height: 1.06;
-}
-
-.dot-calendar {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 12px;
-  width: min(100%, 390px);
-  margin: 42px 0 0;
-}
-
-.dot {
-  aspect-ratio: 1;
-  border: 2px solid rgba(23, 23, 22, 0.12);
-  border-radius: 50%;
-  background: transparent;
-}
-
-.dot.is-filled {
-  border-color: var(--black);
-  background: var(--black);
-}
-
-.dot.is-today {
-  border-color: var(--orange);
-  background: var(--orange);
+  font-size: clamp(1.16rem, 5vw, 1.72rem);
+  font-weight: 560;
+  line-height: 1.12;
 }
 
 .scoreboard {
@@ -247,7 +224,7 @@ body {
   min-height: 136px;
   padding: 16px;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-card);
   background: rgba(255, 255, 255, 0.58);
   box-shadow: var(--shadow);
 }
@@ -298,7 +275,7 @@ body {
 
 .section-card {
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-panel);
   background: rgba(255, 255, 255, 0.62);
   box-shadow: var(--shadow);
   padding: 20px;
@@ -390,11 +367,10 @@ body {
 
   .lede {
     max-width: 39rem;
-    font-size: 2.1rem;
+    font-size: 1.62rem;
   }
 
   .scoreboard {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
-
