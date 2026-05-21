@@ -7,6 +7,7 @@ const siteDir = path.resolve(__dirname, "..");
 const stewartDir = path.resolve(siteDir, "..");
 const args = parseArgs(process.argv.slice(2));
 const date = args.date || todayInNewYork();
+await loadDotenv(path.join(siteDir, ".env"));
 const token = process.env.PUSHOVER_APP_TOKEN || process.env.PUSHOVER_TOKEN;
 const user = process.env.PUSHOVER_USER_KEY || process.env.PUSHOVER_USER;
 
@@ -49,6 +50,34 @@ function firstUrl(value) {
   return match ? match[0] : "";
 }
 
+async function loadDotenv(filePath) {
+  let text = "";
+  try {
+    text = await readFile(filePath, "utf8");
+  } catch {
+    return;
+  }
+
+  for (const line of text.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) {
+      continue;
+    }
+
+    const separatorIndex = trimmed.indexOf("=");
+    if (separatorIndex === -1) {
+      continue;
+    }
+
+    const key = trimmed.slice(0, separatorIndex).trim();
+    const rawValue = trimmed.slice(separatorIndex + 1).trim();
+    const value = rawValue.replace(/^['"]|['"]$/g, "");
+    if (key && !process.env[key]) {
+      process.env[key] = value;
+    }
+  }
+}
+
 function parseArgs(values) {
   const parsed = {};
   for (let index = 0; index < values.length; index += 1) {
@@ -76,4 +105,3 @@ function todayInNewYork() {
     day: "2-digit"
   }).format(new Date());
 }
-

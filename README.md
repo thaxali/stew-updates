@@ -41,6 +41,13 @@ export PUSHOVER_APP_TOKEN="..."
 export PUSHOVER_USER_KEY="..."
 ```
 
+Or create a non-committed `.env` file in this folder:
+
+```bash
+PUSHOVER_APP_TOKEN=...
+PUSHOVER_USER_KEY=...
+```
+
 Send:
 
 ```bash
