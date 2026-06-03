@@ -44,63 +44,6 @@ body {
   padding: max(22px, env(safe-area-inset-top)) 18px max(38px, env(safe-area-inset-bottom));
 }
 
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 44px;
-  margin-bottom: 26px;
-  color: var(--ink);
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 0.98rem;
-  font-weight: 780;
-}
-
-.brand-mark {
-  position: relative;
-  width: 18px;
-  height: 18px;
-  display: inline-block;
-}
-
-.brand-mark::before,
-.brand-mark::after {
-  content: "";
-  position: absolute;
-  width: 9px;
-  height: 17px;
-  border-radius: 999px;
-  background: var(--orange);
-  transform: rotate(-38deg);
-}
-
-.brand-mark::before {
-  left: 1px;
-  top: 0;
-}
-
-.brand-mark::after {
-  right: 1px;
-  bottom: 0;
-  transform: rotate(142deg);
-  opacity: 0.92;
-}
-
-.private-label {
-  padding: 7px 11px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--muted);
-  background: rgba(255, 255, 255, 0.44);
-  font-size: 0.76rem;
-  font-weight: 720;
-}
-
 .state {
   margin-top: 42px;
   border: 1px solid var(--line);
