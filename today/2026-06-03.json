@@ -1,0 +1,198 @@
+{
+  "date": "2026-06-03",
+  "generatedAtLocal": "2026-06-03 12:33 EDT",
+  "brief": "June 3 has a clear spine: BrainSpace and Ax's Day dashboard work up front, a focused middle block for Notes closeout, a PandA calendar block at 5 PM, and Knicks @ Spurs at 8:30. Keep the real commitments bright; let optional public-candidate ideas sit quietly at the bottom.",
+  "pulses": [
+    {
+      "type": "sport",
+      "eyebrow": "Tonight",
+      "title": "Knicks @ Spurs",
+      "value": "8:30 PM",
+      "detail": "NBA Finals Game 1",
+      "source": "Calendar.app + ESPN",
+      "url": "https://espnpressroom.com/us/press-releases/2026/06/abcs-exclusive-coverage-of-the-2026-nba-finals-begins-june-3-new-york-knicks-vs-san-antonio-spurs/",
+      "logos": [
+        {
+          "alt": "New York Knicks logo",
+          "src": "https://cdn.nba.com/logos/nba/1610612752/primary/L/logo.svg"
+        },
+        {
+          "alt": "San Antonio Spurs logo",
+          "src": "https://cdn.nba.com/logos/nba/1610612759/primary/L/logo.svg"
+        }
+      ]
+    },
+    {
+      "type": "tennis",
+      "eyebrow": "Happening",
+      "title": "Roland-Garros",
+      "value": "Final week",
+      "detail": "Quarter-finals window",
+      "source": "Roland-Garros",
+      "url": "https://www.rolandgarros.com/en-us/article/2026-full-schedule-calendar-qualifying-rounds-main-draw-singles-doubles-wheelchair-tennis",
+      "logos": [
+        {
+          "alt": "Roland-Garros logo",
+          "src": "https://images.prismic.io/fft-rg-site%2F95765448-c7fa-428b-b565-8368dba90b17_logo.svg"
+        }
+      ]
+    },
+    {
+      "type": "weather",
+      "eyebrow": "Brooklyn",
+      "title": "Partly cloudy",
+      "value": "59°F",
+      "detail": "Cool; possible late showers",
+      "source": "Weather scan",
+      "url": "https://www.theweathernetwork.com/en/city/us/new-york/brooklyn/current"
+    }
+  ],
+  "periods": [
+    {
+      "id": "warmup",
+      "label": "Warm-up",
+      "marker": "WU",
+      "time": "Wake-9 AM",
+      "intention": "Start from proof instead of drift: check the calendar, read the overnight checkpoints, and make the first visible artifact real.",
+      "items": [
+        {
+          "kind": "committed",
+          "html": "<strong>Calendar:</strong> local Calendar.app found two unique calendar moments today: a PandA block from 5:00-6:45 PM and Knicks @ Spurs from 8:30-11:00 PM."
+        },
+        {
+          "kind": "committed",
+          "html": "<strong>BrainSpace Spaces:</strong> Spaces polish and edge-state capture landed locally with 14 screenshots, a canonical feature doc, a public guide, a bundled Bo KB entry, and a source-hash drift check."
+        },
+        {
+          "kind": "committed",
+          "html": "<strong>Stewart:</strong> the screenshot-library protocol is now in the HQ root instructions, so visible generated work should be captured by agents, not merely remembered."
+        }
+      ]
+    },
+    {
+      "id": "q1",
+      "label": "Q1",
+      "title": "Feature Truth",
+      "time": "9 AM-Noon",
+      "intention": "Convert the morning's product walkthroughs into shippable, documented feature truth before messages fragment attention.",
+      "items": [
+        {
+          "kind": "committed",
+          "html": "<strong>BrainSpace Tasks:</strong> Tasks completed the full walkthrough: recurrence, Reminders push hooks, per-space create, reusable TaskRow, screenshots, canonical doc, public guide, Bo KB, and sync check."
+        },
+        {
+          "kind": "committed",
+          "html": "<strong>BrainSpace Notes:</strong> Notes moved through audit, fixes, and design pass: Planner pin/delete, reusable NoteRow, auto-title, raw/preview markdown toggle, slash insert, and 4 screenshots."
+        },
+        {
+          "kind": "committed",
+          "html": "<strong>Ax's Day:</strong> the Today tab became a real quarter-based dashboard with a briefing paragraph, six expandable phase cards, black active state, compact past cards, and source footnotes."
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "label": "Q2",
+      "title": "Docs Closeout",
+      "time": "Noon-3 PM",
+      "intention": "Close the docs gap before opening the next BrainSpace bucket.",
+      "reset": "At 3 PM, take halftime seriously: step away, then choose Notes closeout or Calendar and Events start.",
+      "items": [
+        {
+          "kind": "committed",
+          "html": "<strong>Finish Notes:</strong> write docs/features/notes.md, derive the public guide and Bo KB, then run the feature sync check."
+        },
+        {
+          "kind": "committed",
+          "html": "<strong>Capture evidence:</strong> confirm the Notes screenshot index and add any final Today-dashboard screenshots to the June 3 screenshot library."
+        },
+        {
+          "kind": "committed",
+          "html": "<strong>Repo posture:</strong> decide whether BrainSpace local commits should be pushed today or intentionally parked with a clean handoff."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "label": "Q3",
+      "title": "Second-Half Decision",
+      "time": "3-6 PM",
+      "intention": "Turn the morning's progress into a clean second-half decision.",
+      "reset": "Halftime question: what is still worth winning today, and what should be parked so it does not become mental residue?",
+      "items": [
+        {
+          "kind": "suggested",
+          "html": "<strong>If Notes is green:</strong> start the Calendar and Events walkthrough using the same audit, screenshots, docs, guide, and Bo KB pipeline."
+        },
+        {
+          "kind": "suggested",
+          "html": "<strong>If Notes is not green:</strong> keep Q3 focused on finishing Notes instead of opening another feature surface."
+        },
+        {
+          "kind": "suggested",
+          "html": "<strong>Device-only backlog:</strong> keep Bo runtime KB answers, task recurrence, Reminders mirror, and two-way iCloud notes tracked as verification items."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "label": "Q4",
+      "title": "Evening Lane",
+      "time": "6-9 PM",
+      "intention": "Choose a low-friction evening lane before the calendar takes over.",
+      "items": [
+        {
+          "kind": "committed",
+          "html": "<strong>Calendar:</strong> keep 5:00-6:45 PM protected for the PandA block, then Knicks @ Spurs is on from 8:30-11:00 PM."
+        },
+        {
+          "kind": "suggested",
+          "html": "<strong>Public-candidate shelf:</strong> if there is spare energy, revisit docs as product design, reusable component rows, no-title notes, or the quarter-based AI workday dashboard."
+        }
+      ]
+    },
+    {
+      "id": "cooldown",
+      "label": "Cool down",
+      "marker": "CD",
+      "time": "9 PM-Sleep",
+      "intention": "Land the receipts so tomorrow can resume without archaeology.",
+      "items": [
+        {
+          "kind": "committed",
+          "html": "<strong>Receipts:</strong> keep the final Today preview capture and any BrainSpace evidence in the June 3 screenshot library."
+        },
+        {
+          "kind": "suggested",
+          "html": "<strong>Tomorrow setup:</strong> leave one plain-English handoff for the next agent if there are open dashboard or BrainSpace decisions."
+        },
+        {
+          "kind": "suggested",
+          "html": "<strong>Next work order:</strong> Notes docs first, Calendar and Events second, Today payload ingestion third."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Calendar",
+      "text": "Trusted source for this pass is local Calendar.app. It returned a PandA block from 5:00-6:45 PM and Knicks @ Spurs from 8:30-11:00 PM; duplicate Knicks sports calendars were collapsed."
+    },
+    {
+      "label": "Connector caveat",
+      "text": "Google Calendar `primary` and `ax@studio89.design` searches returned no events, so the Google connector is not currently reliable for Ax's visible/delegated calendar set."
+    },
+    {
+      "label": "HQ checkpoints",
+      "text": "Read 08:17 BrainSpace Spaces, 09:40 BrainSpace Tasks, 10:34 BrainSpace Notes, and the Ax's Day dashboard artifact bundle."
+    },
+    {
+      "label": "Artifacts",
+      "text": "BrainSpace screenshots live under /Users/ax/3B-26/Assets/screenshots/; dashboard captures live under 99-System/stewart/screenshot-library/2026-06-03/ax-day-dashboard/."
+    },
+    {
+      "label": "Private comms",
+      "text": "Gmail and Slack were intentionally not scanned for this first visual pass."
+    }
+  ]
+}
