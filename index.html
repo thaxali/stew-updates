@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="color-scheme" content="light">
     <title>Stew Updates</title>
-    <link rel="stylesheet" href="./styles.css?v=20260603a">
+    <link rel="stylesheet" href="./styles.css?v=20260603aq">
   </head>
   <body>
     <main class="shell">
@@ -18,20 +18,32 @@
 
       <section class="day" id="day" hidden>
         <section class="hero" id="hero">
-          <p class="eyebrow" id="eyebrow">Ax's Day</p>
+          <div class="hero-meta">
+            <p class="eyebrow" id="eyebrow">Ax's Day</p>
+            <span class="ny-time" id="ny-time"></span>
+          </div>
           <div class="date-lockup">
             <span class="day-number" id="day-number"></span>
             <span class="weekday" id="weekday"></span>
-            <div class="month-stack">
+          <div class="month-stack">
               <span id="month"></span>
               <span id="year"></span>
             </div>
           </div>
-          <p class="lede" id="status">Paste or open a private daily link to unwrap the day.</p>
+          <div class="day-tabs" role="tablist" aria-label="Ax's Day sections">
+            <button class="day-tab is-active" id="tab-yesterday" type="button" role="tab" aria-selected="true" aria-controls="panel-yesterday" data-tab="yesterday">Yesterday's Recap</button>
+            <button class="day-tab" id="tab-today" type="button" role="tab" aria-selected="false" aria-controls="panel-today" data-tab="today">Today</button>
+          </div>
+          <section class="day-tab-panel is-active" id="panel-yesterday" role="tabpanel" aria-labelledby="tab-yesterday" data-panel="yesterday">
+            <p class="lede" id="status">Paste or open a private daily link to unwrap the day.</p>
+            <section class="scoreboard" id="scoreboard" aria-label="Day totals"></section>
+            <section class="metric-detail-panel" id="metric-detail-panel" hidden></section>
+            <article class="markdown" id="content"></article>
+          </section>
+          <section class="day-tab-panel" id="panel-today" role="tabpanel" aria-labelledby="tab-today" data-panel="today" hidden>
+            <article class="markdown today-markdown" id="today-content"></article>
+          </section>
         </section>
-
-        <section class="scoreboard" id="scoreboard" aria-label="Day totals"></section>
-        <article class="markdown" id="content"></article>
       </section>
 
       <section class="state error" id="error" hidden>
@@ -40,6 +52,6 @@
       </section>
     </main>
 
-    <script src="./app.js?v=20260521c"></script>
+    <script src="./app.js?v=20260603aq"></script>
   </body>
 </html>
