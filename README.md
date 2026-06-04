@@ -63,3 +63,15 @@ For the nightly automation, publish only the encrypted day payload:
 ```bash
 npm run publish:day -- --date 2026-05-21
 ```
+
+When the viewer UI changes, publish the static viewer shell too:
+
+```bash
+npm run publish:static
+```
+
+If the change also adds or updates a Today payload, include it explicitly:
+
+```bash
+npm run publish:static -- --file index.html --file styles.css --file app.js --file today/2026-06-03.json
+```
