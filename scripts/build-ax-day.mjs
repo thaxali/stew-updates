@@ -24,9 +24,9 @@ await writeFile(path.join(daysDir, `${date}.json.enc`), `${JSON.stringify(encryp
 
 const localDayDir = path.join(stewartDir, "ax-day", date);
 await mkdir(localDayDir, { recursive: true });
-await writeFile(path.join(localDayDir, "index.html"), renderStandaloneHtml(payload));
 
 const privateLink = `${hostUrl}?day=${encodeURIComponent(date)}&v=${encodeURIComponent(encrypted.rev)}#key=${encodeURIComponent(key)}`;
+await writeFile(path.join(localDayDir, "index.html"), renderStandaloneHtml(payload, privateLink));
 const message = [
   `Your Ax's Day${label} is ready:`,
   privateLink,
@@ -160,87 +160,32 @@ function extractSectionLines(markdownText, sectionName) {
   return section;
 }
 
-function renderStandaloneHtml(payload) {
+function renderStandaloneHtml(payload, privateLink) {
   return `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>${escapeHtml(payload.title)} | ${escapeHtml(payload.date)}</title>
-  <style>${standaloneCss()}</style>
+  <meta http-equiv="refresh" content="0; url=${escapeHtml(privateLink)}">
+  <style>
+    :root{color-scheme:light;--bg:#f7f6f3;--ink:#111;--muted:#7a7771;--line:rgba(17,17,17,.12);--orange:#ff5a1f}
+    *{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:0}
+    main{width:min(100%,520px);padding:28px}p{margin:0;color:var(--muted);font-size:1rem;line-height:1.45}.eyebrow{margin-bottom:14px;font-size:.8rem;font-weight:800;text-transform:uppercase;color:var(--muted)}h1{margin:0 0 18px;font-size:clamp(3rem,18vw,6rem);line-height:.9;letter-spacing:0}a{display:inline-flex;margin-top:22px;padding:10px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink);text-decoration:none;font-weight:800}a:hover{border-color:var(--orange);color:var(--orange)}
+  </style>
+  <script>
+    window.location.replace(${JSON.stringify(privateLink)});
+  </script>
 </head>
 <body>
   <main>
-    <section class="hero">
-      <p class="eyebrow">Ax's Day</p>
-      <h1>${escapeHtml(payload.date)}</h1>
-      <p>${escapeHtml(payload.oneLine)}</p>
-    </section>
-    <section class="metrics">
-      ${metric("Calendar", payload.counts.calendar)}
-      ${metric("Work Made", payload.counts.work)}
-      ${metric("Artifacts", payload.counts.artifacts)}
-      ${metric("Public Seeds", payload.counts.publicSeeds)}
-    </section>
-    <article>${renderMarkdown(payload.markdown)}</article>
+    <p class="eyebrow">Ax's Day</p>
+    <h1>${escapeHtml(payload.date)}</h1>
+    <p>Opening the private Stew Updates dashboard.</p>
+    <a href="${escapeHtml(privateLink)}">Open dashboard</a>
   </main>
 </body>
 </html>
-`;
-}
-
-function metric(label, value) {
-  return `<div><strong>${escapeHtml(String(value))}</strong><span>${escapeHtml(label)}</span></div>`;
-}
-
-function renderMarkdown(markdownText) {
-  const lines = markdownText.split(/\r?\n/);
-  const html = [];
-  let inList = false;
-
-  const closeList = () => {
-    if (inList) {
-      html.push("</ul>");
-      inList = false;
-    }
-  };
-
-  for (const line of lines) {
-    if (!line.trim()) {
-      closeList();
-      continue;
-    }
-
-    const heading = line.match(/^(#{1,3})\s+(.+)$/);
-    if (heading) {
-      closeList();
-      const level = heading[1].length;
-      html.push(`<h${level}>${renderInline(heading[2])}</h${level}>`);
-      continue;
-    }
-
-    const bullet = line.match(/^[-*]\s+(.+)$/);
-    if (bullet) {
-      if (!inList) {
-        html.push("<ul>");
-        inList = true;
-      }
-      html.push(`<li>${renderInline(bullet[1])}</li>`);
-      continue;
-    }
-
-    closeList();
-    html.push(`<p>${renderInline(line)}</p>`);
-  }
-
-  closeList();
-  return html.join("\n");
-}
-
-function standaloneCss() {
-  return `
-:root{color-scheme:dark;--bg:#0b0a09;--ink:#fffaf2;--muted:#bdb5a8;--line:rgba(255,250,242,.16);--panel:rgba(255,250,242,.08);--red:#ff4a2d;--gold:#ffd36a;--mint:#8ff0c3;--blue:#6fd5ff}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 12% 0%,rgba(255,74,45,.22),transparent 28rem),linear-gradient(180deg,#17110e,var(--bg));color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:0}main{width:min(100%,720px);margin:0 auto;padding:28px 18px 42px}.hero{min-height:44svh;display:flex;flex-direction:column;justify-content:flex-end}.eyebrow{width:fit-content;margin:0 0 14px;padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:var(--mint);font-size:.78rem;font-weight:800;text-transform:uppercase}h1{margin:0;font-size:clamp(3.2rem,18vw,6.5rem);line-height:.9;letter-spacing:0}.hero p:last-child{color:var(--muted);font-size:1.2rem;line-height:1.4}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:22px 0}.metrics div{min-height:82px;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}.metrics strong{display:block;font-size:2rem;line-height:1}.metrics span{display:block;margin-top:8px;color:var(--muted);font-size:.78rem;font-weight:800;text-transform:uppercase}article{padding:20px;border:1px solid var(--line);border-radius:8px;background:var(--panel);line-height:1.58}article h1,article h2,article h3{line-height:1.08;letter-spacing:0}article h2{margin-top:30px;color:var(--gold)}article h3{color:var(--mint)}a{color:var(--blue)}code{padding:2px 5px;border-radius:5px;background:rgba(255,250,242,.12);color:var(--gold)}
 `;
 }
 
